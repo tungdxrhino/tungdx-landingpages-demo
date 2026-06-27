@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rhino Retro II Landing Page</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar" aria-label="Primary navigation">
+      <button class="logo-button" type="button" data-scroll="top" aria-label="Back to top">
+        <img src="assets/top-logo.png" alt="Rhino" />
+      </button>
+      <nav>
+        <button type="button" data-scroll="about">About New Retro</button>
+        <button type="button" data-scroll="features">Features</button>
+        <button type="button" data-scroll="models">Models</button>
+      </nav>
+    </header>
+
+    <main id="top" class="page-shell">
+      <section class="hero" aria-label="Retro II hero">
+        <img class="hero-bg" src="assets/hero-bg.png" alt="" />
+        <div class="hero-copy">
+          <img class="hero-logo" src="assets/Retro-2-logo-wrap.png" alt="Retro II" />
+          <img class="hero-line" src="assets/hero-banner-line.png" alt="" aria-hidden="true" />
+          <h1>Timeless Soul Precision Redefined</h1>
+          <p>Upgraded From The Inside Out</p>
+          <button class="asset-button hero-offer" type="button" data-scroll="launch">
+            <img src="assets/CTA_Unlock_Red.png" alt="Unlock Exclusive Offer" />
+          </button>
+          <button class="asset-button hero-explore" type="button" data-scroll="features">
+            <img src="assets/CTA_Unlock_Black.png" alt="Explore Features" />
+          </button>
+        </div>
+      </section>
+
+      <section id="models" class="style-section section-pad">
+        <h2>Choose Your Style</h2>
+        <img class="section-line" src="assets/secction-line.png" alt="" aria-hidden="true" />
+
+        <div class="carousel" aria-label="Retro II models">
+          <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous model">&lsaquo;</button>
+          <div class="carousel-track" id="carouselTrack"></div>
+          <button class="carousel-arrow carousel-next" type="button" aria-label="Next model">&rsaquo;</button>
+        </div>
+
+        <div class="dots" id="modelDots" aria-label="Choose model"></div>
+      </section>
+
+      <section id="about" class="about-section">
+        <div class="about-intro section-pad">
+		<img class="about-logo" src="assets\Retro-2-logo-wrap2.png" alt="about-logo">
+          <p class="eyebrow">Premium Ownership Experience</p>
+          <p class="about-copy">
+            Designed for players who demand quiet confidence, precise performance, and a cue that feels as refined as it looks.
+          </p>
+        </div>
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/KY9pz43ZjUw?si=vU7324mpAYKbuLhz"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+        <button class="asset-button mid-offer" type="button" data-scroll="launch">
+          <img src="assets/CTA_Unlock_Red.png" alt="Unlock Exclusive Offer" />
+        </button>
+      </section>
+
+      <section id="features" class="features-section section-pad">
+        <h2>Key Features</h2>
+        <img class="section-line" src="assets/secction-line.png" alt="" aria-hidden="true" />
+
+        <div class="feature-list">
+          <article class="feature-card">
+            <button class="feature-image-button" type="button" data-popup="0" aria-label="Reveal Premium Japanese Carbon Fiber details">
+              <img src="assets/feature-carbon.png" alt="Premium Japanese carbon fiber" />
+            </button>
+            <div>
+              <h3>Premium Japanese Carbon Fiber</h3>
+              <p>The Stealth Strength Beneath the Timeless, Classic Aesthetic. <button class="reveal-link" type="button" data-popup="0">Reveal the Details &gt;</button></p>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <button class="feature-image-button" type="button" data-popup="1" aria-label="Reveal The All-New Time Tip details">
+              <img src="assets/feature-tip.png" alt="The all-new time tip" />
+            </button>
+            <div>
+              <h3>The All-New Time Tip</h3>
+              <p>Redefining the point of contact for absolute precision in every shot. <button class="reveal-link" type="button" data-popup="1">Reveal the Details &gt;</button></p>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <button class="feature-image-button" type="button" data-popup="2" aria-label="Reveal Ultra-Low Deflection Shaft details">
+              <img src="assets/feature-shaft.png" alt="Ultra-low deflection shaft" />
+            </button>
+            <div>
+              <h3>Ultra-Low Deflection Shaft</h3>
+              <p>An Award-Winning Legacy, Now Re-Engineered to Perfection. <button class="reveal-link" type="button" data-popup="2">Reveal the Details &gt;</button></p>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <button class="feature-image-button" type="button" data-popup="3" aria-label="Reveal Masterful Finish and Aesthetic Depth details">
+              <img src="assets/feature-finish.png" alt="Masterful finish and aesthetic depth" />
+            </button>
+            <div>
+              <h3>Masterful Finish &amp; Aesthetic Depth</h3>
+              <p style="letter-spacing:-0.7px;">The Art of Rare Wood Textures. <button class="reveal-link" type="button" data-popup="3">Reveal the Details &gt;</button></p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="launch" class="launch-section section-pad">
+        <h2>Launch Offer</h2>
+        <p class="offer-subtitle">Limited first batch</p>
+        <form id="offerForm" novalidate>
+          <label class="sr-only" for="email">Email address</label>
+          <input id="email" name="email" type="email" placeholder="Enter your email address" required />
+          <button class="asset-button claim-long" id="claimButton" type="submit" disabled>
+            <img src="assets/CTA_Claim_Long.png" alt="Claim Offer" />
+          </button>
+          <p class="form-note">By clicking, you agree to receive launch updates and exclusive privileges from Rhino.</p>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <footer class="footer">
+        <a href="https://rhino-billiards.com" target="_blank" rel="noopener" aria-label="Go to Rhino Billiards website">
+          <img src="assets/footer-logo.png" alt="Rhino" />
+        </a>
+        <p>&copy; 2026 RHINO is a registered trademark of Carbon Billiards Co., Ltd.</p>
+        <p>Made in Vietnam. Worldwide Shipping.</p>
+      </footer>
+    </main>
+
+    <div class="modal" id="featureModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal></div>
+      <button class="modal-nav modal-prev" type="button" aria-label="Previous feature">&lsaquo;</button>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-label="Feature details">
+        <img id="modalImage" class="modal-image" src="assets/popup-carbon.png" alt="Feature detail" />
+        <button class="modal-close" type="button" aria-label="Close popup"></button>
+        <button class="modal-offer" type="button" data-scroll="launch" aria-label="Unlock Exclusive Offer"></button>
+      </div>
+      <button class="modal-nav modal-next" type="button" aria-label="Next feature">&rsaquo;</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
