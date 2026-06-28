@@ -192,11 +192,10 @@ button {
 
 .section-pad {
   padding: 34px 24px 40px;
-  border-top: 1px solid rgba(194, 153, 85, 0.26);
 }
 
 h2 {
-  margin: 0;
+  margin: -6px;
   color: var(--gold-bright);
   font-family: Microsoft Himalaya, serif;
   font-size: clamp(28px, 7.5vw, 46px);
@@ -360,9 +359,11 @@ h2 {
 
 .dots {
   display: flex;
+  padding-top:130px;
+  left: 335px;
   justify-content: center;
   gap: 12px;
-  margin-top: 3px;
+  margin-top: -20px;
 }
 
 .dots button {
@@ -380,7 +381,6 @@ h2 {
 
 .about-section {
   text-align: center;
-  padding-top: 100px;
   background: var(--black);
 }
 .about-logo{
@@ -449,15 +449,9 @@ h2 {
   grid-template-columns: 31% 1fr;
   min-height: 120px;
   max-width: 430px;
-  border: 1px solid rgba(194, 153, 85, 0.48);
+  border: 0.1px solid rgba(194, 153, 85, 0.48);
   background: linear-gradient(90deg, rgba(9, 9, 8, 0.98), rgba(16, 14, 11, 0.95));
   box-shadow: inset 0 0 24px rgba(194, 153, 85, 0.05);
-  clip-path: polygon(
-    0% 10px, 10px 10px, 10px 0%, 
-    calc(100% - 10px) 0%, calc(100% - 10px) 10px, 100% 10px, 
-    100% calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) 100%, 
-    10px 100%, 10px calc(100% - 10px), 0% calc(100% - 10px)
-  );
 }
 
 
@@ -508,7 +502,7 @@ h2 {
 }
 
 .launch-section h2 {
-  font-size: clamp(34px, 9vw, 46px);
+  font-size: clamp(34px, 9.7vw, 46px);
 }
 
 .offer-subtitle {
@@ -563,7 +557,7 @@ h2 {
   padding: 0 18px;
   color: #fff;
   background: #050505;
-  border: 1px solid rgba(227, 202, 159, 0.55);
+  border: 0.1px solid rgba(227, 202, 159, 0.55);
   border-radius: 4px;
   font-size: clamp(16px, 4.3vw, 20px);
 }
@@ -829,25 +823,13 @@ h2 {
   to { transform: translateX(22%) scale(0.78) rotateY(-24deg); opacity: 0.58; filter: saturate(0.7) brightness(0.7); }
 }
 
-.feature-card {
-  position: relative;
-  isolation: isolate;
-  border: 0;
-  overflow: hidden;
-  clip-path: polygon(
-    0% 10px, 10px 10px, 10px 0%,
-    calc(100% - 10px) 0%, calc(100% - 10px) 10px, 100% 10px,
-    100% calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) 100%,
-    10px 100%, 10px calc(100% - 10px), 0% calc(100% - 10px)
-  );
-}
 
 .feature-card::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 3;
-  padding: 1px;
+  padding: 0.2px;
   pointer-events: none;
   background: linear-gradient(135deg, rgba(226, 171, 83, 0.84), rgba(102, 52, 18, 0.72), rgba(226, 171, 83, 0.68));
   clip-path: inherit;
@@ -970,5 +952,226 @@ h2 {
 
   .modal-next {
     right: 6px;
+  }
+}
+
+
+/* Responsive calibration */
+.page-shell {
+  container-type: inline-size;
+}
+
+.topbar,
+.page-shell {
+  width: min(100%, var(--page-w));
+}
+
+.logo-button {
+  flex-basis: clamp(92px, 25cqw, 120px);
+}
+
+.logo-button img {
+  width: clamp(86px, 23.6cqw, 112px);
+}
+
+.topbar nav button {
+  font-size: clamp(10px, 3.15cqw, 15px);
+}
+
+.hero-copy {
+  width: min(58%, 268px);
+}
+
+.hero-logo {
+  width: min(100%, 50.6cqw);
+}
+
+.hero h1 {
+  font-size: clamp(19px, 5.9cqw, 28px);
+}
+
+.hero p {
+  margin-block: clamp(6px, 2.1cqw, 10px) clamp(10px, 3.8cqw, 18px);
+  font-size: clamp(12px, 3.8cqw, 18px);
+}
+
+.hero-offer,
+.hero-explore,
+.mid-offer {
+  width: min(42.6cqw, 202px);
+}
+
+.hero-explore {
+  margin-top: clamp(7px, 2.5cqw, 12px);
+}
+
+.section-pad {
+  padding: clamp(24px, 7.2cqw, 34px) clamp(14px, 5.1cqw, 24px) clamp(30px, 8.4cqw, 40px);
+}
+
+h2 {
+  font-size: clamp(30px, 9.7cqw, 46px);
+}
+
+.section-line {
+  width: min(42.2cqw, 200px);
+  padding-bottom: clamp(14px, 4.2cqw, 20px);
+}
+
+.carousel {
+  min-height: clamp(332px, 89.5cqw, 424px);
+}
+
+.carousel-track {
+  height: clamp(320px, 85.4cqw, 405px);
+}
+
+.model-card {
+  width: clamp(206px, 61cqw, 289px);
+  min-height: clamp(300px, 81.4cqw, 386px);
+  padding: clamp(8px, 2.3cqw, 11px) clamp(9px, 2.5cqw, 12px) clamp(11px, 3.2cqw, 15px);
+}
+
+.model-card img {
+  margin-bottom: clamp(8px, 2.7cqw, 13px);
+}
+
+.model-card h3 {
+  font-size: clamp(22px, 6.75cqw, 32px);
+}
+
+.price {
+  font-size: clamp(23px, 6.75cqw, 32px);
+}
+
+.claim-small {
+  width: clamp(82px, 21.1cqw, 100px);
+}
+
+.carousel-arrow {
+  width: clamp(30px, 8.4cqw, 40px);
+  height: clamp(46px, 12.2cqw, 58px);
+  font-size: clamp(38px, 11cqw, 52px);
+}
+
+.dots {
+  padding-top: 85px;
+}
+
+.about-logo {
+  width: min(76cqw, 360px);
+  max-width: 100%;
+  height: auto;
+}
+
+.about-intro {
+  min-height: clamp(230px, 59cqw, 280px);
+  padding-top: clamp(54px, 16.5cqw, 78px);
+}
+
+.feature-card {
+  grid-template-columns: minmax(104px, 31%) 1fr;
+  min-height: clamp(104px, 25.3cqw, 120px);
+  max-width: 100%;
+}
+
+.feature-image-button,
+.feature-image-button img,
+.feature-card img {
+  min-height: clamp(104px, 27.4cqw, 130px);
+}
+
+.feature-card div {
+  padding: clamp(10px, 3cqw, 14px) clamp(12px, 4.2cqw, 20px) clamp(8px, 2.1cqw, 10px);
+}
+
+.feature-card h3 {
+  font-size: clamp(19px, 5.9cqw, 28px);
+}
+
+.feature-card p,
+.reveal-link {
+  font-size: clamp(10px, 2.55cqw, 12px);
+}
+
+.feature-card p[style],
+.reveal-link[style] {
+  letter-spacing: -6.5% !important;
+}
+
+.launch-section {
+  background-size: contain;
+  background-position: center top;
+}
+
+#offerForm {
+  padding-top: clamp(108px, 33.8cqw, 160px);
+}
+
+#email {
+  height: clamp(46px, 11.4cqw, 54px);
+}
+
+.footer img {
+  width: min(33.3cqw, 158px);
+}
+
+.modal {
+  padding: clamp(8px, 3.4vw, 16px);
+}
+
+.modal-card {
+  width: min(86vw, 61.33vh, 474px);
+  max-width: calc(100vw - 16px);
+  max-height: 92vh;
+}
+
+.modal-close {
+  top: 3%;
+  right: 10%;
+  min-width: clamp(28px, 8.4vw, 40px);
+}
+
+.modal-offer {
+  left: 34.8%;
+  bottom: 0.7%;
+  width: 30%;
+  padding: 0;
+}
+
+.modal-prev {
+  left: max(4px, calc(50% - min(43vw, 237px) - clamp(42px, 13vw, 62px)));
+}
+
+.modal-next {
+  right: max(4px, calc(50% - min(43vw, 237px) - clamp(42px, 13vw, 62px)));
+}
+
+@media (max-width: 340px) {
+  .topbar {
+    gap: 1px;
+    padding-inline: 4px;
+  }
+
+  .topbar nav button {
+    font-size: 9px;
+    padding-inline: 2px;
+  }
+
+  .hero-copy {
+    top: 8.8%;
+    width: 60%;
+  }
+
+  .hero h1 {
+    font-size: clamp(17px, 5.6cqw, 19px);
+  }
+
+  .feature-card {
+    grid-template-columns: 35% 1fr;
+  }
+
+  .feature-card div {
+    padding-inline: 10px;
   }
 }
