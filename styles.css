@@ -745,13 +745,13 @@ h2 {
 
 .logo-button:hover img,
 .logo-button:focus-visible img {
-  filter: brightness(1.18) saturate(1.08);
+  filter: brightness(1.18) saturate(1.5);
 }
 
 .topbar nav button:hover,
 .topbar nav button:focus-visible {
-  color: #ffe2a0;
-  background: rgba(194, 153, 85, 0.1);
+  color: #ffebc3;
+  background: rgba(120, 20, 10, 1);
   text-shadow: 0 0 12px rgba(230, 192, 120, 0.55);
 }
 
@@ -907,13 +907,10 @@ h2 {
 
 .modal-nav {
   position: absolute;
-  z-index: 4;
   top: 50%;
   width: 48px;
   height: 76px;
-  transform: translateY(-50%);
-  border: 1px solid rgba(230, 192, 120, 0.58);
-  border-radius: 999px;
+  transform: translateY(-20%);
   color: var(--gold-bright);
   background: rgba(0, 0, 0, 0.42);
   font-family: Georgia, "Times New Roman", serif;
