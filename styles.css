@@ -1301,3 +1301,177 @@ h2 {
     font-size: clamp(13px, 4.05cqw, 18px);
   }
 }
+
+/* Mobile Xiaomi spacing and border cleanup */
+.topbar {
+  border-bottom: 0 !important;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.66) !important;
+}
+
+.topbar nav button {
+  border: 0 !important;
+}
+
+.logo-button:focus-visible,
+.topbar nav button:focus-visible {
+  outline: 0 !important;
+}
+
+.asset-button:focus-visible,
+.logo-button:focus-visible,
+.topbar nav button:focus-visible,
+.carousel-arrow:focus-visible,
+.feature-card:focus-visible,
+.modal-close:focus-visible,
+.modal-offer:focus-visible {
+  outline-offset: 1px;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(22px, 7.35cqw, 36px);
+  line-height: 1.06;
+  white-space: nowrap;
+  text-wrap: nowrap;
+}
+
+.section-line {
+  margin: 12px auto 28px;
+  padding-bottom: 0;
+}
+
+.style-section .section-line,
+.features-section .section-line {
+  margin-top: 12px;
+  margin-bottom: 28px;
+}
+
+.style-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.style-section .carousel {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+}
+
+.model-card {
+  border: 0 !important;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, #050504 0%, #000000 100%),
+    var(--black);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.7), inset 0 0 24px rgba(194, 153, 85, 0.06);
+}
+
+.model-card::before,
+.model-card::after {
+  content: none !important;
+}
+
+.model-card.is-active {
+  box-shadow: 0 22px 38px rgba(0, 0, 0, 0.76), inset 0 0 26px rgba(230, 192, 120, 0.08);
+}
+
+.model-card img,
+.model-card h3,
+.model-card .price,
+.model-card .claim-small {
+  position: relative;
+  z-index: 1;
+}
+
+.model-card h3 {
+  margin: auto 0 2px;
+  font-size: clamp(16px, 4.9cqw, 25px);
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+.model-card h3 span {
+  margin-top: 2px;
+  font-size: 1.42em;
+  line-height: 0.92;
+}
+
+.price {
+  margin: 2px 0 14px;
+  font-size: clamp(18px, 5.05cqw, 26px);
+  line-height: 1;
+}
+
+.hero h1 {
+  font-size: clamp(16px, 4.85cqw, 24px);
+  line-height: 1.14;
+  text-wrap: balance;
+}
+
+.hero p {
+  font-size: clamp(11px, 3.15cqw, 16px);
+  line-height: 1.22;
+}
+
+.feature-card h3 {
+  font-size: clamp(13px, 4.15cqw, 21px);
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.launch-section h2 {
+  margin-bottom: 8px;
+  font-size: clamp(26px, 7.8cqw, 38px);
+  line-height: 1.08;
+}
+
+.offer-subtitle {
+  margin: 0;
+  font-size: clamp(17px, 5.2cqw, 23px);
+  line-height: 1.02;
+}
+
+.form-note,
+.form-status {
+  line-height: 1.42;
+}
+
+@media (max-width: 390px) {
+  h2 {
+    font-size: clamp(21px, 7.05cqw, 29px);
+  }
+
+  .section-line,
+  .style-section .section-line,
+  .features-section .section-line {
+    margin-top: 10px;
+    margin-bottom: 24px;
+  }
+
+  .model-card h3 {
+    font-size: clamp(15px, 4.55cqw, 22px);
+    line-height: 1.12;
+  }
+
+  .model-card h3 span {
+    font-size: 1.38em;
+  }
+
+  .price {
+    font-size: clamp(17px, 4.9cqw, 23px);
+  }
+
+  .feature-card h3 {
+    font-size: clamp(12px, 3.95cqw, 17px);
+  }
+
+  .launch-section h2 {
+    font-size: clamp(24px, 7.4cqw, 31px);
+  }
+
+  .offer-subtitle {
+    font-size: clamp(15px, 4.8cqw, 20px);
+  }
+}
