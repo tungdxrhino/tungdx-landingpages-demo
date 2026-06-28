@@ -551,6 +551,7 @@ h2 {
 }
 
 #email {
+  margin-top: 40px;
   width: 100%;
   height: 54px;
   padding: 0 18px;
@@ -751,7 +752,7 @@ h2 {
 .topbar nav button:hover,
 .topbar nav button:focus-visible {
   color: #ffebc3;
-  background: rgba(120, 20, 10, 1);
+  background: rgba(120, 20, 10, 0.5);
   text-shadow: 0 0 12px rgba(230, 192, 120, 0.55);
 }
 
@@ -1424,7 +1425,7 @@ h2 {
 }
 
 .offer-subtitle {
-  margin: -10px;
+  margin: -15px;
   font-size: clamp(17px, 5.2cqw, 23px);
   line-height: 1.02;
 }
@@ -1469,5 +1470,302 @@ h2 {
 
   .offer-subtitle {
     font-size: clamp(15px, 4.8cqw, 20px);
+  }
+}
+
+/* Offer and product modal interactions */
+.dots {
+  position: relative;
+  z-index: 30;
+  opacity: 1;
+  filter: none;
+  isolation: isolate;
+  pointer-events: auto;
+}
+
+.dots button {
+  position: relative;
+  z-index: 31;
+  opacity: 1;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.65);
+}
+
+.model-image-button {
+  width: 100%;
+  display: block;
+  border: 0;
+  padding: 0;
+  margin: 0 0 clamp(8px, 2.7cqw, 13px);
+  background: transparent;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.model-card img,
+.model-image-button img {
+  margin-bottom: 0;
+}
+
+.model-image-button:hover img,
+.model-image-button:focus-visible img {
+  filter: brightness(1.1) saturate(1.06);
+  transform: scale(1.018);
+}
+
+.model-image-button:focus-visible {
+  outline: 2px solid rgba(233, 201, 130, 0.85);
+  outline-offset: 2px;
+}
+
+.form-status {
+  color: var(--gold-bright);
+}
+
+.offer-modal,
+.product-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 130;
+  display: none;
+  place-items: center;
+  padding: clamp(10px, 3.4vw, 16px);
+}
+
+.offer-modal.is-open,
+.product-modal.is-open {
+  display: grid;
+}
+
+.offer-modal-backdrop,
+.product-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(8px);
+}
+
+.offer-modal-card,
+.product-modal-card {
+  position: relative;
+  z-index: 1;
+  width: min(86vw, 61.33vh, 474px);
+  max-width: calc(100vw - 18px);
+  max-height: 92vh;
+  color: #ead7bd;
+  border: 1px solid rgba(194, 153, 85, 0.58);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(13, 12, 10, 0.98), rgba(0, 0, 0, 0.98)),
+    var(--black);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.78), inset 0 0 30px rgba(194, 153, 85, 0.08);
+}
+
+.offer-modal-card {
+  display: grid;
+  gap: 16px;
+  padding: clamp(24px, 6.8vw, 34px);
+  text-align: center;
+}
+
+.offer-modal-message {
+  margin: 0;
+  font-size: clamp(15px, 3.8vw, 18px);
+  line-height: 1.5;
+}
+
+.offer-code {
+  margin: 0;
+  padding: 12px 10px;
+  color: var(--gold-bright);
+  border: 1px solid rgba(194, 153, 85, 0.5);
+  background: rgba(95, 31, 12, 0.2);
+  font-size: clamp(22px, 6vw, 30px);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  word-break: break-word;
+}
+
+.offer-modal-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.offer-copy-button,
+.offer-boutique-button,
+.offer-return-button {
+  min-height: 44px;
+  border: 1px solid rgba(194, 153, 85, 0.68);
+  color: #f4dfbd;
+  background: linear-gradient(180deg, #6f1b0d, #3d0d05);
+  font-weight: 800;
+  transition: filter 180ms ease, transform 180ms ease, border-color 180ms ease;
+}
+
+.offer-boutique-button {
+  background: linear-gradient(180deg, #090909, #000000);
+}
+
+.offer-return-button {
+  min-height: 0;
+  border: 0;
+  background: transparent;
+  color: #b99666;
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+.offer-copy-button:hover,
+.offer-copy-button:focus-visible,
+.offer-boutique-button:hover,
+.offer-boutique-button:focus-visible,
+.offer-return-button:hover,
+.offer-return-button:focus-visible {
+  filter: brightness(1.14) saturate(1.08);
+  transform: translateY(-1px);
+}
+
+.offer-copy-status {
+  min-height: 18px;
+  margin: -8px 0 0;
+  color: var(--gold-bright);
+  font-size: 12px;
+}
+
+.product-modal-card {
+  aspect-ratio: 2 / 3;
+  overflow: hidden auto;
+  padding: clamp(14px, 3.8vw, 20px);
+}
+
+.product-modal-close {
+  position: absolute;
+  z-index: 5;
+  top: 10px;
+  right: 10px;
+  width: clamp(32px, 8vw, 42px);
+  aspect-ratio: 1;
+  border: 0;
+  padding: 0;
+  background: url("assets/x-symbol.png") center / contain no-repeat;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.75));
+}
+
+.product-gallery {
+  width: 100%;
+  aspect-ratio: 1 / 0.72;
+  overflow: hidden;
+  border: 1px solid rgba(194, 153, 85, 0.35);
+  background: #020202;
+  touch-action: pan-y;
+}
+
+.product-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.product-gallery-dots {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 10px 0 12px;
+}
+
+.product-gallery-dots button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  padding: 0;
+  background: transparent;
+}
+
+.product-gallery-dots button[aria-current="true"] {
+  background: var(--gold-bright);
+  box-shadow: 0 0 9px rgba(233, 201, 130, 0.42);
+}
+
+.product-modal-content {
+  display: grid;
+  gap: 7px;
+  text-align: center;
+}
+
+.product-modal-content h3 {
+  margin: 0;
+  color: var(--gold-bright);
+  font-family: Microsoft Himalaya, serif;
+  font-size: clamp(27px, 7.2vw, 38px);
+  font-weight: 100;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.product-sku,
+.product-modal-price,
+.product-intro,
+.product-spec p {
+  margin: 0;
+}
+
+.product-sku {
+  color: #b99666;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.product-modal-price {
+  color: var(--gold-bright);
+  font-family: Microsoft Himalaya, serif;
+  font-size: clamp(25px, 6vw, 34px);
+  line-height: 0.9;
+}
+
+.product-intro {
+  color: #ead7bd;
+  font-size: clamp(13px, 3.4vw, 15px);
+  line-height: 1.45;
+}
+
+.product-spec {
+  display: grid;
+  gap: 5px;
+  margin-top: 6px;
+  color: #cfc0a8;
+  font-size: clamp(10px, 2.8vw, 12px);
+  line-height: 1.36;
+  text-align: left;
+}
+
+.product-spec strong {
+  color: var(--gold-bright);
+}
+
+@media (max-width: 390px) {
+  .offer-modal-actions {
+    gap: 8px;
+  }
+
+  .offer-copy-button,
+  .offer-boutique-button {
+    font-size: 12px;
+  }
+
+  .product-modal-card {
+    padding: 12px;
+  }
+
+  .product-modal-content h3 {
+    font-size: clamp(23px, 6.6vw, 30px);
+  }
+
+  .product-spec {
+    font-size: 10px;
   }
 }
