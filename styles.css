@@ -1769,3 +1769,142 @@ h2 {
     font-size: 10px;
   }
 }
+
+/* Product modal 400x720 refinement */
+.product-modal-card {
+  width: min(400px, calc(100vw - 18px), 55.55vh);
+  height: min(720px, calc(100vh - 18px));
+  aspect-ratio: auto;
+  padding: clamp(10px, 2.5vw, 14px);
+  border-width: 0.2px;
+  border-radius: 7px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+}
+
+.product-gallery {
+  aspect-ratio: auto;
+  height: clamp(176px, 30.55vh, 220px);
+  min-height: 0;
+  border: 0;
+  background: #020202;
+}
+
+.product-gallery-dots {
+  gap: 6px;
+  margin: 7px 0 8px;
+}
+
+.product-gallery-dots button {
+  width: 7px;
+  height: 7px;
+}
+
+.product-modal-content {
+  min-height: 0;
+  overflow: hidden;
+  gap: 4px;
+}
+
+.product-modal-content h3 {
+  font-size: 28px;
+  line-height: 0.94;
+}
+
+.product-sku {
+  font-size: 12px;
+  line-height: 1.12;
+}
+
+.product-modal-price {
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.08;
+}
+
+.product-intro {
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.product-spec {
+  gap: 2px;
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 1.16;
+}
+
+.product-spec p:first-child {
+  margin-bottom: 3px;
+}
+
+.offer-modal-card,
+.product-modal-card {
+  border-width: 0.2px;
+}
+
+@media (max-height: 760px) {
+  .product-modal-card {
+    height: calc(100vh - 16px);
+    padding: 9px;
+  }
+
+  .product-gallery {
+    height: clamp(154px, 27vh, 198px);
+  }
+
+  .product-gallery-dots {
+    margin: 6px 0 6px;
+  }
+
+  .product-modal-content {
+    gap: 3px;
+  }
+
+  .product-modal-content h3 {
+    font-size: clamp(24px, 6vw, 27px);
+  }
+
+  .product-intro {
+    font-size: clamp(13px, 3.6vw, 15px);
+    line-height: 1.22;
+  }
+
+  .product-spec {
+    font-size: clamp(9.2px, 2.62vw, 11px);
+    line-height: 1.1;
+  }
+}
+
+@media (max-width: 390px) {
+  .product-modal-card {
+    width: calc(100vw - 18px);
+    height: min(720px, calc(100vh - 16px));
+    padding: 9px;
+  }
+
+  .product-gallery {
+    height: clamp(150px, 25.5vh, 190px);
+  }
+
+  .product-modal-content h3 {
+    font-size: clamp(23px, 6.2vw, 27px);
+  }
+
+  .product-sku,
+  .product-modal-price {
+    font-size: 12px;
+  }
+
+  .product-intro {
+    font-size: clamp(13px, 3.75vw, 15px);
+    line-height: 1.22;
+  }
+
+  .product-spec {
+    font-size: clamp(9px, 2.58vw, 10.5px);
+    line-height: 1.08;
+  }
+}

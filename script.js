@@ -395,7 +395,7 @@ const returnToExperience = document.getElementById('returnToExperience');
 const offerCountdown = document.getElementById('offerCountdown');
 const offerCopyStatus = document.getElementById('offerCopyStatus');
 let offerCountdownTimer = 0;
-let offerCountdownValue = 7;
+let offerCountdownValue = 12;
 
 function syncOfferButton() {
   claimButton.disabled = false;
@@ -418,7 +418,7 @@ function generateOfferCode() {
 
 function startOfferCountdown() {
   window.clearInterval(offerCountdownTimer);
-  offerCountdownValue = 7;
+  offerCountdownValue = 12;
   offerCountdown.textContent = offerCountdownValue;
   offerCountdownTimer = window.setInterval(() => {
     offerCountdownValue -= 1;
