@@ -110,11 +110,13 @@ function renderModels() {
     .map((model, index) => {
       return [
         '<article class="model-card ' + modelPosition(index) + '" data-model="' + index + '">',
-        '  <button class="model-image-button" type="button" data-product="' + index + '" aria-label="Open Retro II ' + model.name + ' details">',
+        '  <button class="model-image-button model-detail-trigger" type="button" data-product="' + index + '" aria-label="Open Retro II ' + model.name + ' details">',
         '    <img src="' + model.image + '" alt="Retro II ' + model.name + '" />',
         '  </button>',
-        '  <h3>Retro II <span>' + model.name + '</span></h3>',
-        '  <p class="price">' + model.price + '</p>',
+        '  <button class="model-info-button model-detail-trigger" type="button" data-product="' + index + '" aria-label="Open Retro II ' + model.name + ' details">',
+        '    <h3>Retro II <span>' + model.name + '</span></h3>',
+        '    <p class="price">' + model.price + '</p>',
+        '  </button>',
         '  <button class="asset-button claim-small" type="button" data-scroll="launch">',
         '    <img src="assets/CTA_Claim_Short.png" alt="Claim Offer" />',
         '  </button>',
@@ -163,11 +165,12 @@ document.querySelector('.carousel-next').addEventListener('click', () => setActi
 
 carouselTrack.addEventListener('click', (event) => {
   if (suppressCarouselClick) return;
+  if (event.target.closest('.claim-small')) return;
   const card = event.target.closest('.model-card');
   if (!card) return;
   const index = Number(card.dataset.model);
 
-  if (event.target.closest('.model-image-button')) {
+  if (event.target.closest('.model-detail-trigger') || index === activeModel) {
     if (index === activeModel) openProductModal(index);
     else setActiveModel(index);
     return;
@@ -307,10 +310,16 @@ let activeProduct = 0;
 let activeProductImage = 0;
 let productTouchStart = 0;
 let productPointerStart = 0;
+let productGalleryTimer = 0;
+const productGalleryDelay = 3000;
 
 function renderProductModal() {
   const product = models[activeProduct];
-  productGallery.innerHTML = '<img src="' + product.gallery[activeProductImage] + '" alt="' + product.edition + ' detail image" />';
+  productGallery.innerHTML = [
+    '<img src="' + product.gallery[activeProductImage] + '" alt="' + product.edition + ' detail image ' + (activeProductImage + 1) + '" />',
+    '<button class="product-gallery-edge product-gallery-edge-prev" type="button" aria-label="Previous product image" data-product-edge="-1"></button>',
+    '<button class="product-gallery-edge product-gallery-edge-next" type="button" aria-label="Next product image" data-product-edge="1"></button>',
+  ].join('');
   productGalleryDots.innerHTML = product.gallery
     .map((image, index) => {
       const current = index === activeProductImage ? 'true' : 'false';
@@ -324,6 +333,18 @@ function renderProductModal() {
   productSpec.innerHTML = productSpecHtml;
 }
 
+function stopProductGalleryAuto() {
+  window.clearTimeout(productGalleryTimer);
+}
+
+function scheduleProductGalleryAuto() {
+  stopProductGalleryAuto();
+  if (!productModal.classList.contains('is-open')) return;
+  productGalleryTimer = window.setTimeout(() => {
+    moveProductImage(1, true);
+  }, productGalleryDelay);
+}
+
 function openProductModal(index) {
   activeProduct = index;
   activeProductImage = 0;
@@ -334,6 +355,7 @@ function openProductModal(index) {
   productModal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
   document.querySelector('.product-modal-close').focus();
+  scheduleProductGalleryAuto();
 }
 
 function closeProductModal() {
@@ -341,12 +363,15 @@ function closeProductModal() {
   productModal.classList.remove('is-open');
   productModal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+  stopProductGalleryAuto();
 }
 
-function moveProductImage(direction) {
+function moveProductImage(direction, fromAuto = false) {
   const gallery = models[activeProduct].gallery;
   activeProductImage = (activeProductImage + direction + gallery.length) % gallery.length;
   renderProductModal();
+  if (fromAuto) scheduleProductGalleryAuto();
+  else scheduleProductGalleryAuto();
 }
 
 productGalleryDots.addEventListener('click', (event) => {
@@ -354,6 +379,13 @@ productGalleryDots.addEventListener('click', (event) => {
   if (!dot) return;
   activeProductImage = Number(dot.dataset.productImage);
   renderProductModal();
+  scheduleProductGalleryAuto();
+});
+
+productGallery.addEventListener('click', (event) => {
+  const edge = event.target.closest('[data-product-edge]');
+  if (!edge) return;
+  moveProductImage(Number(edge.dataset.productEdge));
 });
 
 document.querySelector('.product-modal-close').addEventListener('click', closeProductModal);
@@ -381,6 +413,51 @@ productGallery.addEventListener('pointerup', (event) => {
   if (Math.abs(delta) < 46) return;
   moveProductImage(delta < 0 ? 1 : -1);
 });
+
+const hero = document.querySelector('.hero');
+const heroBg = document.querySelector('.hero-bg');
+let heroTouchActive = false;
+
+function updateHeroMotion(clientX, clientY) {
+  if (!hero || !heroBg) return;
+  const rect = hero.getBoundingClientRect();
+  const x = ((clientX - rect.left) / rect.width - 0.5) * 8;
+  const y = ((clientY - rect.top) / rect.height - 0.5) * 8;
+  hero.style.setProperty('--hero-shift-x', x.toFixed(2) + 'px');
+  hero.style.setProperty('--hero-shift-y', y.toFixed(2) + 'px');
+}
+
+function resetHeroMotion() {
+  if (!hero) return;
+  hero.style.setProperty('--hero-shift-x', '0px');
+  hero.style.setProperty('--hero-shift-y', '0px');
+}
+
+if (hero) {
+  hero.addEventListener('pointermove', (event) => {
+    if (event.pointerType === 'touch') return;
+    updateHeroMotion(event.clientX, event.clientY);
+  });
+
+  hero.addEventListener('pointerleave', resetHeroMotion);
+
+  hero.addEventListener('touchstart', (event) => {
+    heroTouchActive = true;
+    const touch = event.changedTouches[0];
+    updateHeroMotion(touch.clientX, touch.clientY);
+  }, { passive: true });
+
+  hero.addEventListener('touchmove', (event) => {
+    if (!heroTouchActive) return;
+    const touch = event.changedTouches[0];
+    updateHeroMotion(touch.clientX, touch.clientY);
+  }, { passive: true });
+
+  hero.addEventListener('touchend', () => {
+    heroTouchActive = false;
+    resetHeroMotion();
+  }, { passive: true });
+}
 
 const offerForm = document.getElementById('offerForm');
 const emailInput = document.getElementById('email');
